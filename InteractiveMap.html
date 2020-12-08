@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Managed Trees - Interactive Map</title>
+
+<!-- Google fonts and bootstrap-->
+<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<link rel = "stylesheet" href= "https://fonts.googleapis.com/css?family=Nunito">
+
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Mapbox & D3 -->
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+<script src='https://d3js.org/d3.v3.min.js'></script>
+<script src="https://d3js.org/d3-dsv.v1.min.js"></script>
+<script src="https://d3js.org/d3-fetch.v1.min.js"></script>
+<script src="https://d3js.org/d3-format.v1.min.js"></script>
+
+<style>
+
+/*Document Style*/
+	p {
+	  font-family: 'Nunito', sans-serif;
+	  font-size: 11px;
+	  line-height: 130%;
+	  color:#222222;
+	  font-weight:300;
+	  text-align: justify;
+	  text-justify:inter-word;
+	}
+
+	h1 {
+	  font-family: 'Nunito', sans-serif;
+	  color:#222222;
+	  font-size:48px;
+	  opacity: 1;
+	  line-height:1.3;
+	  /*text-shadow: 10px 10px 10px #000;*/
+	}
+
+	h2 {
+	  font-family: 'Nunito', sans-serif;
+	  color:#242424;
+	  font-size:18px;
+	  font-weight:50;
+	  line-height:1.3;
+	  /*text-shadow: 5px 5px 5px #000;*/
+	}
+
+	h3 {
+	  font-family: 'Nunito', sans-serif;
+	  color:#242424;
+	  font-size:13px;
+	  font-weight:50;
+	  line-height:1.3;
+	  /*text-shadow: 5px 5px 5px #000;*/
+	}
+
+	a {
+	  font-family: 'Nunito', sans-serif;
+	  font-size: 16px;
+	  color:#222222;
+	  font-weight:300;
+	  text-justify:inter-word;
+
+	}
+
+
+	.title-block {
+	  position: absolute;
+	  text-align: center;
+	  top: 20%;
+	  bottom: 30%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	  opacity: .8;
+	}
+
+	.title-image{
+	  opacity: .5
+	}
+
+	.navbar-expand-lg  {
+	  background-color: #415567;
+	  background-image: none;
+	}
+
+/*Map Style*/
+	#map {
+		width: 100%;
+		height: 96.5%;
+		position: absolute;
+		top: 20px;
+		left: 20px;
+	}
+
+	.map-overlay {
+		font-size: 14px;
+		position: absolute;
+		width: 260px;
+		text-align: center;
+		bottom: 30px;
+		right: -20px;
+		transform: scale(0.9);
+	}
+
+	.map-overlay .map-overlay-inner {
+		background-color: #fff;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+		border-radius: 3px;
+		padding: 10px;
+		margin-bottom: 10px;
+	}
+
+	.map-overlay h2 {
+		line-height: 16px;
+		display: block;
+		margin: 0 0 10px;
+	}
+
+	.map-overlay .legend .bar {
+		height: 10px;
+		width: 100%;
+		background: linear-gradient(to right, #415567, #ffffff, #CB9B8E);
+	}
+
+	.map-overlay input {
+		background-color: transparent;
+		display: inline-block;
+		width: 100%;
+		position: relative;
+		margin: 0;
+		cursor: ew-resize;
+	}
+
+	.map-overlay-vis {
+		font-size: 12px;
+		text-align: center;
+		position: absolute;
+		width: 140px;
+		top: 105px;
+		right: -15px;
+		visibility: hidden;
+		border: 1px solid rgba(0,0,0,0.2);
+		transform: scale(0.9);
+	}
+
+	.map-overlay-vis .map-overlay-vis-inner {
+		background-color: #fff;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+		border-radius: 3px;
+		padding: 10px;
+		margin-bottom: 10px;
+	}
+
+	.map-overlay-vis label {
+		display: block;
+		margin: 0 0 10px;
+	}
+
+	.map-overlay-vis input {
+		background-color: transparent;
+		display: inline-block;
+		width: 100%;
+		position: relative;
+		margin: 0;
+		cursor: ew-resize;
+	}
+
+	#menu {
+		background: #fff;
+		position: absolute;
+		z-index: 1;
+		top: 25px;
+		right: -15px;
+		border-radius: 5px;
+		width: 140px;
+		border: 1px solid rgba(0,0,0,0.2);
+		transform: scale(0.9);
+	}
+
+	#menu a {
+		font-size: 13px;
+		color: #404040;
+		display: block;
+		margin: 0;
+		padding: 0;
+		padding: 10px;
+		text-decoration: none;
+		border-bottom: 1px solid rgba(0,0,0,0.25);
+		text-align: center;
+	}
+
+	#menu a:last-child {
+		border: none;
+	}
+	#menu a:hover {
+		background-color: #f8f8f8;
+		color: #404040;
+	}
+
+	#menu a.active {
+		background-color: #3887be;
+		color: #ffffff;
+		border-radius: 5px;
+	}
+	#menu a.active:hover {
+		background: #3074a4;
+	}
+
+	.slider {
+  		-webkit-appearance: none;
+ 		width: 100%;
+  		height: 6px;
+  		border-radius: 5px;
+  		background: #d3d3d3;
+  		outline: none;
+  		opacity: 0.7;
+  		-webkit-transition: .2s;
+  		transition: opacity .2s;
+	}
+
+	.slider::-webkit-slider-thumb {
+  		-webkit-appearance: none;
+  		appearance: none;
+  		width: 12px;
+  		height: 12px;
+  		border-radius: 50%;
+  		background: #415567;
+  		cursor: pointer;
+	}
+
+	.slider::-moz-range-thumb {
+  		width: 25px;
+  		height: 25px;
+  		border-radius: 50%;
+  		background: #4CAF50;
+  		cursor: pointer;
+	}
+
+	.slider-label {
+		padding-top: 3px;
+		padding-bottom: 0px;
+		width: 100%;
+		position: relative;
+		font-family: "Nunito";
+		font-size: 11px;
+		font-weight: 700;
+	}
+
+</style>
+
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+   <div class="container">
+    	<a class="navbar-brand" href="index.html">MANAGED TREES</a>
+      	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      	</button>
+      	<div class="collapse navbar-collapse" id="navbarResponsive">
+        	<ul class="navbar-nav ml-auto">
+          	<li class="nav-item active">
+            	<a class="nav-link" href="index.html">Home
+              	<span class="sr-only">(current)</span>
+            	</a>
+          	</li>
+          	<li class="nav-item">
+            	<a class="nav-link" href="Radar.html">Explore by Neighborhood</a>
+          	</li>
+          	<li class="nav-item">
+            	<a class="nav-link" href="parallelcoords.html">Linking Variables</a>
+          	</li>
+          	<li class="nav-item">
+            	<a class="nav-link" href="InteractiveMap.html">Interactive Priority Map</a>
+          	</li>
+          	<li class="nav-item">
+            	<a class="nav-link" href="References.html">References</a>
+          	</li>
+        	</ul>
+     	</div>
+    </div>
+</nav>
+
+<main role="main" class="container" style="height: 100%; padding-left: 30px; padding-right: 50px;">
+	<div class="row">
+		<div class="col-3">
+			<div class="row" style="padding-top: 20px;">
+				<row><h2> INTERACTIVE URBAN FOREST PRIORITY MAP </h2></row>
+				<row><p>Use the sliders to explore different ways to prioritize tree planting across the city of Boston. The top 10 blocks city-wide for your priority weighting appear in red. Drag all sliders but one to zero to see a single variable on the map.</p></row>
+			</div>
+
+			<div class="row">
+				<h3>Existing Canopy Cover</h3>
+				<input id="slider-canopy" class="slider" type="range" min="0" max="2" step="0.25" value="1" />
+				<label class="slider-label" id="multiplier-canopy" style="position: relative; left: 47%">1x</label>
+			</div>
+			<div class="row">
+				<h3>Existing Public Open Space</h3>
+				<input id="slider-pubopen" class="slider" type="range" min="0" max="2" step="0.25" value="0" />
+				<label class="slider-label" id="multiplier-pubopen">0x</label>
+			</div>
+			<div class="row">
+				<h3>Existing Private Open Space</h3>
+				<input id="slider-privopen" class="slider" type="range" min="0" max="2" step="0.25" value="0" />
+				<label class="slider-label" id="multiplier-privopen">0x</label>
+			</div>
+			<div class="row">
+				<h3>Flood Risk</h3>
+				<input id="slider-flood" class="slider" type="range" min="0" max="2" step="0.25" value="0" />
+				<label class="slider-label" id="multiplier-flood">0x</label>
+			</div>
+			<div class="row">
+				<h3>Urban Heat Island Effects</h3>
+				<label id="month"></label>
+				<input id="slider-temp" class="slider" type="range" min="0" max="2" step="0.25" value="0" />
+				<label class="slider-label" id="multiplier-temp">0x</label>
+			</div>
+			<div class="row">
+				<h3>Non-White Population</h3>
+				<input id="slider-nonw" class="slider" type="range" min="0" max="2" step="0.25" value="0" />
+				<label class="slider-label" id="multiplier-nonw">0x</label>
+			</div>
+			<div class="row">
+				<h3>Hispanic Population</h3>
+				<input id="slider-hisp" class="slider" type="range" min="0" max="2" step="0.25" value="0" />
+				<label class="slider-label" id="multiplier-hisp">0x</label>
+			</div>
+			<div class="row">
+				<h3>Population Over 65</h3>
+				<input id="slider-65" class="slider" type="range" min="0" max="2" step="0.25" value="0" />
+				<label class="slider-label" id="multiplier-65">0x</label>
+			</div>
+			<div class="row">
+				<h3>Low Median Income</h3>
+				<input id="slider-medinc" class="slider" type="range" min="0" max="2" step="0.25" value="0" />
+				<label class="slider-label" id="multiplier-medinc">0x</label>
+			</div>
+			<div class="row">
+				<h3>High Unemployment</h3>
+				<input id="slider-unemp" class="slider" type="range" min="0" max="2" step="0.25" value="0" />
+				<label class="slider-label" id="multiplier-unemp">0x</label>
+			</div>
+			<div class="row">
+				<h3>No High School Diploma</h3>
+				<input id="slider-nohs" class="slider" type="range" min="0" max="2" step="0.25" value="0" />
+				<label class="slider-label" id="multiplier-nohs">0x</label>
+			</div>
+			<div class="row">
+				<h3>Social Vulnerability Index</h3>
+				<input id="slider-svi" class="slider" type="range" min="0" max="2" step="0.25" value="0" />
+				<label class="slider-label" id="multiplier-svi">0x</label>
+			</div>
+		</div>
+		<div class="col-9">
+			<div id="map"></div>
+			<nav id="menu"></nav>
+			<div class="map-overlay top">
+				<div class="map-overlay-inner">
+					<div id="legend" class="legend">
+					<div class="bar"></div>
+					<div>Planting Priority - Lowest to Highest</div>
+					</div>
+				</div>
+			</div>
+			<div class="map-overlay-vis top">
+				<div class="map-overlay-vis-inner" id="slider-blocks">
+				<label>Block Opacity: <span id="slider-value">100%</span></label>
+				<input id="slider-blocks-input" type="range" min="50" max="100" step="0" value="100"/>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<script> type="text/javascript"
+
+	mapboxgl.accessToken = 'pk.eyJ1Ijoic2tlbGx5LWdzZCIsImEiOiJja2dnamkwZXYxdjIwMnJxdXZxOW52aTVvIn0.Wxx4iY7dKMSp57R384ZGoQ';
+
+	const map = new mapboxgl.Map({
+		container: 'map', // container id
+		style: 'mapbox://styles/skelly-gsd/cki8089b5awyq1aodxi7qu8a0', // style URL
+		center: [-71.06, 42.318], // starting position [lng, lat]
+		zoom: 11 // starting zoom
+	});
+
+	var sliderCanopy = document.getElementById('slider-canopy');
+	var mCanopyText = document.getElementById('multiplier-canopy');
+	var mCanopy = sliderCanopy.value;
+
+	var sliderFlood = document.getElementById('slider-flood');
+	var mFloodText = document.getElementById('multiplier-flood');
+	var mFlood = sliderFlood.value;
+
+	var sliderTemp = document.getElementById('slider-temp');
+	var mTempText = document.getElementById('multiplier-temp');
+	var mTemp = sliderTemp.value;
+
+	var sliderSVI = document.getElementById('slider-svi');
+	var mSVIText = document.getElementById('multiplier-svi');
+	var mSVI = sliderSVI.value;
+
+	var slider65 = document.getElementById('slider-65');
+	var m65Text = document.getElementById('multiplier-65');
+	var m65 = slider65.value;
+
+	var sliderNonW = document.getElementById('slider-nonw');
+	var mNonWText = document.getElementById('multiplier-nonw');
+	var mNonW = sliderNonW.value;
+
+	var sliderHisp = document.getElementById('slider-hisp');
+	var mHispText = document.getElementById('multiplier-hisp');
+	var mHisp = sliderHisp.value;
+
+	var sliderUnemp = document.getElementById('slider-unemp');
+	var mUnempText = document.getElementById('multiplier-unemp');
+	var mUnemp = sliderUnemp.value;
+
+	var sliderNoHS = document.getElementById('slider-nohs');
+	var mNoHSText = document.getElementById('multiplier-nohs');
+	var mNoHS = sliderNoHS.value;
+
+	var sliderMedInc = document.getElementById('slider-medinc');
+	var mMedIncText = document.getElementById('multiplier-medinc');
+	var mMedInc = sliderMedInc.value;
+
+	var sliderPubOpen = document.getElementById('slider-pubopen');
+	var mPubOpenText = document.getElementById('multiplier-pubopen');
+	var mPubOpen = sliderPubOpen.value;
+
+	var sliderPrivOpen = document.getElementById('slider-privopen');
+	var mPrivOpenText = document.getElementById('multiplier-privopen');
+	var mPrivOpen = sliderPrivOpen.value;
+
+
+	var sliderBlocksInput = document.getElementById('slider-blocks-input');
+	var sliderBlocksValue = document.getElementById('slider-value');
+
+	let hoveredStateId = null;
+
+  	const popup = new mapboxgl.Popup({
+    	closeButton: false,
+    	closeOnClick: false
+  	});
+
+  	var toggleGroupIds = ['neighborhood','satellite'];
+  	var neighborhoodLayers = ['neighborhood', 'neighborhood-label']
+
+  	var topData = [{'OID_': "3300"}, {'GEOID10': "250250712012009"}]
+
+  	//Map Load
+
+	map.on('load', function() {
+
+		var satelliteLayers = map.getStyle().layers
+
+		d3.csv("Blocks_InteractiveMap_NormalizedData.csv").then((data) => {
+			initFeatureState(data)
+		});
+
+		map.addSource('boston-neighborhoods', {
+			type: 'vector',
+			url: 'mapbox://skelly-gsd.0tgp89d9',
+		});
+
+		map.addLayer({
+        	'id': 'neighborhood-label',
+        	'type': 'symbol',
+        	'source': 'boston-neighborhoods',
+        	'source-layer': 'Boston_Neighborhoods-shp-8o4zln',
+        	'layout': {
+        		'text-field': ['get','Name'],
+        		'text-font': ['Open Sans Semibold'],
+        		'text-size': 12,
+        		'visibility': 'none'
+        	},
+        	'style': {
+        		'text-halo-width': 1,
+        		'text-halo-color': '#ffffff'
+        	},
+      	});
+
+		map.addLayer({
+        	'id': 'neighborhood',
+        	'type': 'line',
+        	'source': 'boston-neighborhoods',
+        	'source-layer': 'Boston_Neighborhoods-shp-8o4zln',
+        	'layout': {
+        		'visibility': 'none'
+        	},
+        	'paint': {
+          		'line-color': '#877b59',
+				'line-width': 1
+        	}},
+        	'neighborhood-label'
+      	);
+
+		const initFeatureState = (data) => {
+
+			map.addSource('blocksJSON', {
+				type: 'geojson',
+				data: 'Blocks_Processed.json',
+				promoteId: 'GEOID10'
+			})
+
+			map.addLayer({
+        		'id': 'blocks-top10',
+        		'type': 'fill',
+        		'source': 'blocksJSON',
+        		'layout': {
+        			'visibility': 'none'
+        		},
+        		'paint': {
+          			'fill-color': '#A7554C',
+          			'fill-outline-color': '#CB9B8E'
+        		}},
+        		'neighborhood'
+      		);
+
+			map.addLayer({
+        		'id': 'blocks',
+        		'type': 'fill',
+        		'source': 'blocksJSON',
+        		'paint': {
+          			'fill-color': ['case',
+            			['!=', ['feature-state', 'index'], null],
+            			['interpolate',
+              				['linear'],
+              				['to-number', ['feature-state', 'index']],
+              				0, '#415567', //1.2
+              				0.8, '#ffffff', //3.38
+              				1, '#CB9B8E' //6.8
+            			],
+            		'rgb(140, 140, 140)'
+            		]
+        		}},
+        		'blocks-top10'
+      		);
+
+      		map.on('mousemove', 'blocks', (e) => {
+        		if (e.features.length > 0) {
+          		if (hoveredStateId) {
+            		map.setFeatureState({
+              			source: 'blocksJSON',
+              			id: hoveredStateId
+            		}, {
+             			hover: false
+            		});
+          		}
+          		hoveredStateId = e.features[0].id;
+          			map.setFeatureState({
+            		source: 'blocksJSON',
+            		id: hoveredStateId
+          		}, {
+            		hover: true
+          		});
+        		}
+      		});
+
+
+      		map.on('mousemove', 'blocks', (e) => {
+
+        		map.getCanvas().style.cursor = 'pointer';
+        		const description = `
+        		<h3>Neighborhood: ${e.features[0].properties.Name} <h3>
+        		<h3>Index:  ${Number((e.features[0].state.index).toFixed(4))} </h3>`;
+
+        		popup
+          			.setLngLat(e.lngLat)
+          			.setHTML(description)
+          			.addTo(map);
+      		});
+
+      		map.on('mouseleave', 'blocks', () => {
+        		if (hoveredStateId) {
+          			map.setFeatureState({
+            			source: 'blocksJSON',
+            			id: hoveredStateId
+          			}, {
+            			hover: false
+          			});
+        		}
+        		hoveredStateId = null;
+        		map.getCanvas().style.cursor = '';
+        		popup.remove();
+      		});
+
+      		var setStates = (data) => {
+        		data.forEach((row) => {
+         			map.setFeatureState({
+            		source: 'blocksJSON',
+            		id: row.GEOID10
+          			}, {
+            		index: mCanopy*(1-row.nCanopyLCLU)
+            		//	+ mFlood*row.nTotFlood
+            		//	+ mTemp*row.nTemp
+            		//	+ mSVI*row.nTotSVI
+            		//	+ m65*row.n65plus
+            		//	+ mNonW*row.nNonWhite
+            		//	+ mHisp*row.nHisp
+            		//	+ mUnemp*row.nUnemp
+            		//	+ mNoHS*row.nNoHS
+            		//	+ mMedInc*(1-row.nMedInc)
+            		//	+ mPubOpen*row.nPublicOpen
+            		//	+ mPrivOpen*row.nPrivateOpen
+          			})
+        		})
+      		}
+
+      		const setAfterLoad = (e) => {
+        		if (e.sourceId === 'blocksJSON' && e.isSourceLoaded) {
+          			setStates(data);
+          			map.off('sourcedata', setAfterLoad);
+        		}
+      		}
+
+      		if (map.isSourceLoaded('blocksJSON')) {
+        		setStates(data);
+      		} else {
+        		map.on('sourcedata', setAfterLoad);
+      		}
+
+
+
+      		//Canopy Slider Event
+
+			sliderCanopy.addEventListener('input', function(e) {
+      			mCanopy = parseFloat(e.target.value, 0.25);
+      			mCanopyText.textContent = e.target.value + 'x';
+      			mCanopyText.style.position = 'relative';
+      			mCanopyText.style.left = e.target.value*47 + '%';
+      			setTimeout( function() {
+        			updatePriority(data);
+        		}, 100);
+      		});
+
+      		// Flood Slider Event
+
+      		sliderFlood.addEventListener('input', function(e) {
+      			mFlood = parseFloat(e.target.value, 0.25);
+      			mFloodText.textContent = e.target.value + 'x';
+      			mFloodText.style.position = 'relative';
+      			mFloodText.style.left = e.target.value*47 + '%';
+      			setTimeout( function() {
+        			updatePriority(data);
+        		}, 100);
+      		});
+
+      		// Temp Slider Event
+
+      		sliderTemp.addEventListener('input', function(e) {
+      			mTemp = parseFloat(e.target.value, 0.25);
+      			mTempText.textContent = e.target.value + 'x';
+      			mTempText.style.position = 'relative';
+      			mTempText.style.left = e.target.value*47 + '%';
+      			setTimeout( function() {
+        			updatePriority(data);
+        		}, 100);
+      		});
+
+      		// SVI Slider Event
+
+      		sliderSVI.addEventListener('input', function(e) {
+      			mSVI = parseFloat(e.target.value, 0.25);
+      			mSVIText.textContent = e.target.value + 'x';
+      			mSVIText.style.position = 'relative';
+      			mSVIText.style.left = e.target.value*47 + '%';
+      			setTimeout( function() {
+        			updatePriority(data);
+        		}, 100);
+      		});
+
+      		// 65 Slider Event
+
+      		slider65.addEventListener('input', function(e) {
+      			m65 = parseFloat(e.target.value, 0.25);
+      			m65Text.textContent = e.target.value + 'x';
+      			m65Text.style.position = 'relative';
+      			m65Text.style.left = e.target.value*47 + '%';
+      			setTimeout( function() {
+        			updatePriority(data);
+        		}, 100);
+      		});
+
+      		// Non-White Slider Event
+
+      		sliderNonW.addEventListener('input', function(e) {
+      			mNonW = parseFloat(e.target.value, 0.25);
+      			mNonWText.textContent = e.target.value + 'x';
+      			mNonWText.style.position = 'relative';
+      			mNonWText.style.left = e.target.value*47 + '%';
+      			setTimeout( function() {
+        			updatePriority(data);
+        		}, 100);
+      		});
+
+      		// Hispanic Slider Event
+
+      		sliderHisp.addEventListener('input', function(e) {
+      			mHisp = parseFloat(e.target.value, 0.25);
+      			mHispText.textContent = e.target.value + 'x';
+      			mHispText.style.position = 'relative';
+      			mHispText.style.left = e.target.value*47 + '%';
+      			setTimeout( function() {
+        			updatePriority(data);
+        		}, 100);
+      		});
+
+      		// Unemployed Slider Event
+
+      		sliderUnemp.addEventListener('input', function(e) {
+      			mUnemp = parseFloat(e.target.value, 0.25);
+      			mUnempText.textContent = e.target.value + 'x';
+      			mUnempText.style.position = 'relative';
+      			mUnempText.style.left = e.target.value*47 + '%';
+      			setTimeout( function() {
+        			updatePriority(data);
+        		}, 100);
+      		});
+
+      		// No High School Slider Event
+
+      		sliderNoHS.addEventListener('input', function(e) {
+      			mNoHS = parseFloat(e.target.value, 0.25);
+      			mNoHSText.textContent = e.target.value + 'x';
+      			mNoHSText.style.position = 'relative';
+      			mNoHSText.style.left = e.target.value*47 + '%';
+      			setTimeout( function() {
+        			updatePriority(data);
+        		}, 100);
+      		});
+
+			// Median Income Slider Event
+
+      		sliderMedInc.addEventListener('input', function(e) {
+      			mMedInc = parseFloat(e.target.value, 0.25);
+      			mMedIncText.textContent = e.target.value + 'x';
+      			mMedIncText.style.position = 'relative';
+      			mMedIncText.style.left = e.target.value*47 + '%';
+      			setTimeout( function() {
+        			updatePriority(data);
+        		}, 100);
+      		});
+
+
+			// Public Open Slider Event
+
+      		sliderPubOpen.addEventListener('input', function(e) {
+      			mPubOpen = parseFloat(e.target.value, 0.25);
+      			mPubOpenText.textContent = e.target.value + 'x';
+      			mPubOpenText.style.position = 'relative';
+      			mPubOpenText.style.left = e.target.value*47 + '%';
+      			setTimeout( function() {
+        			updatePriority(data);
+        		}, 100);
+      		});
+
+			// Private Open Slider Event
+
+      		sliderPrivOpen.addEventListener('input', function(e) {
+      			mPrivOpen = parseFloat(e.target.value, 0.25);
+      			mPrivOpenText.textContent = e.target.value + 'x';
+      			mPrivOpenText.style.position = 'relative';
+      			mPrivOpenText.style.left = e.target.value*47 + '%';
+      			setTimeout( function() {
+        			updatePriority(data);
+        		}, 100);
+      		});
+
+      		//Blocks opacity slider event
+
+      		sliderBlocksInput.addEventListener('input', function (e) {
+				map.setPaintProperty('blocks', 'fill-opacity', parseInt(e.target.value, 10) / 100);
+				map.setPaintProperty('blocks-top10', 'fill-opacity', parseInt(e.target.value, 10) / 150);
+ 				sliderBlocksValue.textContent = e.target.value + '%';
+			});
+
+      	}
+
+
+    	for (var i = 0; i < toggleGroupIds.length; i++) {
+			var id = toggleGroupIds[i];
+
+			var link = document.createElement('a');
+			link.href = '#';
+			link.className = '';
+			link.textContent = id;
+
+			link.onclick = function (e) {
+				var clickedLayer = this.textContent;
+				e.preventDefault();
+				e.stopPropagation();
+
+				var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+				if (clickedLayer === 'satellite') {
+					if (visibility === 'visible') {
+						for (var i = 0; i < satelliteLayers.length; i++) {
+							map.setLayoutProperty(satelliteLayers[i].id, 'visibility', 'none');
+						}
+						document.getElementById('slider-blocks').style.visibility = 'hidden';
+						this.className = '';
+					} else {
+						for (var i = 0; i < satelliteLayers.length; i++) {
+							map.setLayoutProperty(satelliteLayers[i].id, 'visibility', 'visible');
+						}
+						map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+						document.getElementById('slider-blocks').style.visibility = 'visible';
+						this.className = 'active';
+					}
+				} else {
+					if (visibility === 'visible') {
+						for (var i = 0; i < neighborhoodLayers.length; i++) {
+							map.setLayoutProperty(neighborhoodLayers[i], 'visibility', 'none');
+						}
+						this.className = '';
+					} else {
+						for (var i = 0; i < neighborhoodLayers.length; i++) {
+							map.setLayoutProperty(neighborhoodLayers[i], 'visibility', 'visible');
+						}
+						this.className = 'active';
+					}
+				}
+			};
+
+			var layers = document.getElementById('menu');
+			layers.appendChild(link);
+
+		}
+
+	})
+
+	function updatePriority(data) {
+
+		var mCanopy = sliderCanopy.value;
+		var mFlood = sliderFlood.value;
+		var mTemp = sliderTemp.value;
+		var mSVI = sliderSVI.value;
+		var m65 = slider65.value;
+		var mNonW = sliderNonW.value;
+		var mHisp = sliderHisp.value;
+		var mUnemp = sliderUnemp.value;
+		var mNoHS = sliderNoHS.value;
+		var mMedInc = sliderMedInc.value;
+		var mPubOpen = sliderPubOpen.value;
+		var mPrivOpen = sliderPrivOpen.value;
+
+		var setStates = (data) => {
+        	data.forEach((row) => {
+         		map.setFeatureState({
+            	source: 'blocksJSON',
+            	id: row.GEOID10
+          		}, {
+            	index: ( mCanopy*(1-row.nCanopyLCLU)
+            		+ mFlood*row.nTotFlood
+            		+ mTemp*row.nTemp
+            		+ mSVI*row.nTotSVI
+            		+ m65*row.n65plus
+            		+ mNonW*row.nNonWhite
+            		+ mHisp*row.nHisp
+            		+ mUnemp*row.nUnemp
+            		+ mNoHS*row.nNoHS
+            		+ mMedInc*(1-row.nMedInc)
+            		+ mPubOpen*row.nPublicOpen
+            		+ mPrivOpen*row.nPrivateOpen
+          		)})
+        	})
+      	}
+
+      	const setAfterLoad = (e) => {
+        		if (e.sourceId === 'blocksJSON' && e.isSourceLoaded) {
+          			setStates(data);
+          			map.off('sourcedata', setAfterLoad);
+        		}
+      		}
+
+      	if (map.isSourceLoaded('blocksJSON')) {
+        	setStates(data);
+      	} else {
+        	map.on('sourcedata', setAfterLoad);
+      	}
+
+      	data.forEach(function(d) {
+      		d.index = mCanopy*(1-d.nCanopyLCLU)
+            		+ mFlood*d.nTotFlood
+            		+ mTemp*d.nTemp
+            		+ mSVI*d.nTotSVI
+            		+ m65*d.n65plus
+            		+ mNonW*d.nNonWhite
+            		+ mHisp*d.nHisp
+            		+ mUnemp*d.nUnemp
+            		+ mNoHS*d.nNoHS
+            		+ mMedInc*(1-d.nMedInc)
+            		+ mPubOpen*d.nPublicOpen
+            		+ mPrivOpen*d.nPrivateOpen;
+      	});
+
+      	var nameFilter = data.filter(function(d) {
+      		return d.Name != 'Harbor Islands';
+      	});
+
+      	var areaFilter = nameFilter.filter(function(d) {
+      		return d.Shape_Area >= 100000;
+      	});
+
+      	var topData = areaFilter.sort(function(a,b) {
+      		return d3.descending(+a.index, +b.index)
+      	}).slice(0,10);
+
+      	var min = d3.min(data, function(d) {
+      		return d.index;
+      	});
+      	var max = d3.max(data, function(d) {
+      		return d.index;
+      	});
+      	var median = d3.median(data, function(d) {
+      		return d.index;
+      	});
+
+      	var mean = d3.mean(data, function(d) {
+      		return d.index;
+      	});
+
+      	console.log(min)
+      	console.log(median)
+      	console.log(mean)
+      	console.log(max)
+
+      	if (median === 0) {
+      		mid = mean;
+      	}else{
+      		mid = median;
+      	}
+
+      	var fillScale = ['case',
+            ['!=', ['feature-state', 'index'], null],
+            ['interpolate',
+              	['linear'],
+              	['to-number', ['feature-state', 'index']],
+              		min, '#415567',
+              		mid, '#ffffff',
+              		max, '#CB9B8E'
+            ],
+            'rgb(140, 140, 140)'
+        ];
+
+        var topFilter = ['in', ['get','GEOID10'],
+        	['literal',[topData[0].GEOID10,
+        	topData[1].GEOID10,
+        	topData[2].GEOID10,
+        	topData[3].GEOID10,
+        	topData[4].GEOID10,
+        	topData[5].GEOID10,
+        	topData[6].GEOID10,
+        	topData[7].GEOID10,
+        	topData[8].GEOID10,
+        	topData[9].GEOID10
+        	]]
+        ]
+
+    	console.log(topFilter)
+
+        map.setPaintProperty('blocks', 'fill-color', fillScale);
+        map.setFilter('blocks-top10', topFilter);
+        if (max === 0) {
+        	map.setLayoutProperty('blocks-top10', 'visibility', 'none');
+        }else{
+        map.setLayoutProperty('blocks-top10', 'visibility', 'visible')
+    	}
+    }
+
+
+    function buildFilter(arr) {
+  		var filter = ['in', 'GEOID10'];
+  			if (arr.length === 0) {
+     			return filter;
+  		}
+  		for(var i = 0; i < arr.length; i += 1) {
+   				filter.push(arr[i]);
+  		}
+  		return filter;
+	}
+
+
+
+</script>
+
+</body>
+</html>

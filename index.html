@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Managed Trees</title>
+
+  <!-- Google fonts and bootstrap-->
+  <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+  <link rel = "stylesheet" href= "https://fonts.googleapis.com/css?family=Nunito">
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  color:#222222;
+  font-weight:300;
+  text-align: justify;
+  text-justify:inter-word;
+}
+
+h1 {
+  font-family: 'Nunito', sans-serif;
+  color:#222222;
+  font-size:48px;
+  opacity: 1;
+  line-height:1.3;
+  /*text-shadow: 10px 10px 10px #000;*/
+}
+
+h2 {
+  font-family: 'Nunito', sans-serif;
+  color:#242424;
+  font-size:26px;
+  font-weight:50;
+  line-height:1.3;
+  /*text-shadow: 5px 5px 5px #000;*/
+}
+
+a {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  color:#222222;
+  font-weight:300;
+  text-justify:inter-word;
+
+}
+
+
+.title-block {
+  position: absolute;
+  text-align: center;
+  top: 20%;
+  bottom: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: .8;
+}
+
+.title-image{
+  opacity: .5
+}
+
+.navbar-expand-lg  {
+  background-color: #839896;
+  background-image: none;
+}
+
+/* Container needed to position the button. Adjust the width as needed */
+.container-button {
+  position: absolute;
+  width: 100%;
+  padding: 50px;
+  display: block;
+}
+
+/* Make the image responsive */
+.container-button img {
+  width: 100%;
+  height: 180px;
+  border: 1px solid #E5E5E5;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.container-button .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #ACACAC;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.container-button .btn:hover {
+  background-color: #415567;
+}
+
+</style>
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-#405567 static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">MANAGED TREES</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Radar.html">Explore by Neighborhood</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="parallelcoords.html">Linking Variables</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="InteractiveMap.html">Interactive Priority Map</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="References.html">References</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+<main>
+<div class ="container">
+    <div class="row">
+      <img src="BostonSkyline_Trees_resized-02.svg" class = "title-image" alt="Title Block" style="width:100%; margin-top:260px; padding:20px">
+      <div class = "title-block" style="margin-top:80px; margin-bottom: 50px; padding:10px">
+        <h1>Managed Trees: Identifying Priority Planting Areas for an Equitable Boston Canopy</h1>
+        <h2>by Kira Clingen, Winn Costantini, Slide Kelly</h2>
+      </div>
+    </div>
+
+    <div class='container'>
+      <div style='height:400px; margin-left:10px; margin-right:10px; margin-bottom: 180px'>
+        <br><br>
+        <p>In 1765, Bostonian colonists gathered around an elm tree on the corner of Essex and Orange Streets to protest the Stamp Act. The protests were the first act of resistance against the British government, and the tree became known as the Liberty Tree. In 2018, a plaza commemorating the tree was opened across the street from the site of the historic tree. The plaza is impervious. There are five trees in planters scattered across the plaza. One is a disease-resistant Dutch elm tree. The total cost of the plaza project was $180,000.   </p>
+        <p> The same year, the Boston Parks Department planted just 1,140 trees. The cost to plant a single street tree in Boston is estimated at $4.38, or just under $5,000 total. Most urban tree assessments are based on these two quantities: the number of trees in a given area, and the cost to plant each tree. The number of trees is often replaced with a measurement of canopy cover, derived from LIDAR scans. In 2016 across the City of Boston, there was an estimated 27%
+        canopy coverage.</p>
+        <p> 27% only begins to tell the story of Boston’s tree canopy. From individual trees to Boston’s signature Emerald Necklace, trees are a civic resource, and they are not distributed equitably throughout the city.</p>
+        <p>A first step to understanding how tree canopy is distributed is to move away from seeing the city as a unit, and instead describe the city how Bostonians identify themselves, in neighborhoods with rich connections to place and community. </p>
+        <p>While the Boston Parks Department may invest hundreds of thousands of dollars in specimen trees in plazas in the predominantly white, wealthy financial district, other neighborhoods in Boston are in need of more equitably distributed, tree canopy to mitigate environmental stressors such as heat and flooding. </p>
+        <p>In August 2020, Boston City Councilor Michelle Wu released a report called “Planning for a Boston Green New Deal” that focused on increasing the health and equity of Boston’s urban tree canopy. This campaign can be mobilized to include managing existing and newly planted canopy, potentially creating new jobs as part of a Green New Deal that employ residents in neighborhoods that have been under-invested. But to make the most of the plan, it is critical to first explore ways to identify priority planting areas where there is an immediate, significant need for trees.</p>
+      </div>
+  </div>
+</div>
+
+<div class="container" style="margin-bottom: 60px; padding-right: 50px">
+  <div class="row">
+  <div class="col-4">
+    <div class="container-button">
+      <img src="Radar_Button.jpg" alt="Radar">
+       <a href="Radar.html"><button class="btn">Explore by Neighborhood</button></a>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="container-button">
+      <img src="Parallel_Button.png" alt="Parallel">
+       <a href="parallelcoords.html"><button class="btn">Linking Variables</button></a>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="container-button">
+      <img src="Map_Button.jpg" alt="Interactive">
+      <a href="InteractiveMap.html"><button class="btn">Interactive Priority Map</button></a>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="container">
+  <div class="row">
+     <div class='container'>
+      <div style='height:400px; margin-left:10px; margin-right:10px; padding:10px'>
+        <br><br><br><br><br><br><br><br><br>
+        <p>Start by learning about existing canopy, environmental, and social conditions across the city though the Explore by Neighborhood visualization. Next, see how neighborhoods compare across a range of variables that could be used to prioritize tree planting in Linking Variables. Finally, explore priorities for planting yourself through the Interactive Priority Map, because it is not always the places with just the least amount of canopy cover that need it the most, and conditions can very drastically from one block to the next.</p>
+        <p>Trees provide intersectional social and environmental benefits to the communities they are planted in. Yet trees are too often seen as a luxury resource, often ignored by governments who overlook socially and economically vulnerable communities when they generate planting plans looking at canopy cover and budgets.</p>
+        <p>We can add equity to the equation for tree planting in Boston.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class ="container">
+    <div class="row">
+      <img src="12062020_BostonSkyline-07.svg" class = "title-image" alt="Title Block" style="width:100%; padding:20px">
+    </div>
+</div>
+</main>
+
+
+
+
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.slim.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

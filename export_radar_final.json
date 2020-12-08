@@ -1,0 +1,962 @@
+[
+ {
+   "key": "Allston",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "Allston",
+         "value": 0.086956522
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "Allston",
+         "value": 0.608695652
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "Allston",
+         "value": 0.826086957
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "Allston",
+         "value": 0.739130435
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "Allston",
+         "value": 0.782608696
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "Allston",
+         "value": 0.956521739
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "Allston",
+         "value": 0.695652174
+      }
+   ]
+},
+ {
+   "key": "Back Bay",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "Back Bay",
+         "value": 0.826086957
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "Back Bay",
+         "value": 0.347826087
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "Back Bay",
+         "value": 0.304347826
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "Back Bay",
+         "value": 0.217391304
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "Back Bay",
+         "value": 0.652173913
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "Back Bay",
+         "value": 0.52173913
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "Back Bay",
+         "value": 0.304347826
+      }
+   ]
+},
+ {
+   "key": "Beacon Hill",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "Beacon Hill",
+         "value": 0.652173913
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "Beacon Hill",
+         "value": 0.173913043
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "Beacon Hill",
+         "value": 0.130434783
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "Beacon Hill",
+         "value": 0.086956522
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "Beacon Hill",
+         "value": 0.826086957
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "Beacon Hill",
+         "value": 0.043478261
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "Beacon Hill",
+         "value": 0.043478261
+      }
+   ]
+},
+ {
+   "key": "Brighton",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "Brighton",
+         "value": 0.52173913
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "Brighton",
+         "value": 0.47826087
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "Brighton",
+         "value": 0.565217391
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "Brighton",
+         "value": 0.391304348
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "Brighton",
+         "value": 0.260869565
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "Brighton",
+         "value": 0.173913043
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "Brighton",
+         "value": 0.130434783
+      }
+   ]
+},
+ {
+   "key": "Charlestown",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "Charlestown",
+         "value": 0.304347826
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "Charlestown",
+         "value": 0.52173913
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "Charlestown",
+         "value": 0.347826087
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "Charlestown",
+         "value": 0.260869565
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "Charlestown",
+         "value": 0.695652174
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "Charlestown",
+         "value": 0.695652174
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "Charlestown",
+         "value": 0.869565217
+      }
+   ]
+},
+ {
+   "key": "Chinatown",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "Chinatown",
+         "value": 0.956521739
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "Chinatown",
+         "value": 0.043478261
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "Chinatown",
+         "value": 0.782608696
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "Chinatown",
+         "value": 0.826086957
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "Chinatown",
+         "value": 0.956521739
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "Chinatown",
+         "value": 0.782608696
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "Chinatown",
+         "value": 0.47826087
+      }
+   ]
+},
+ {
+   "key": "Dorchester",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "Dorchester",
+         "value": 0.434782609
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "Dorchester",
+         "value": 0.739130435
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "Dorchester",
+         "value": 0.695652174
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "Dorchester",
+         "value": 0.913043478
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "Dorchester",
+         "value": 0.347826087
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "Dorchester",
+         "value": 0.608695652
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "Dorchester",
+         "value": 0.652173913
+      }
+   ]
+},
+ {
+   "key": "Downtown",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "Downtown",
+         "value": 0.913043478
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "Downtown",
+         "value": 0.130434783
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "Downtown",
+         "value": 0.739130435
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "Downtown",
+         "value": 0.47826087
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "Downtown",
+         "value": 0.913043478
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "Downtown",
+         "value": 0.260869565
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "Downtown",
+         "value": 0.913043478
+      }
+   ]
+},
+ {
+   "key": "East Boston",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "East Boston",
+         "value": 0.260869565
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "East Boston",
+         "value": 1
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "East Boston",
+         "value": 0.608695652
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "East Boston",
+         "value": 0.608695652
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "East Boston",
+         "value": 0.391304348
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "East Boston",
+         "value": 0.434782609
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "East Boston",
+         "value": 0.956521739
+      }
+   ]
+},
+ {
+   "key": "Fenway",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "Fenway",
+         "value": 0.130434783
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "Fenway",
+         "value": 0.434782609
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "Fenway",
+         "value": 0.913043478
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "Fenway",
+         "value": 0.52173913
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "Fenway",
+         "value": 0.739130435
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "Fenway",
+         "value": 0.565217391
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "Fenway",
+         "value": 0.347826087
+      }
+   ]
+},
+ {
+   "key": "Hyde Park",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "Hyde Park",
+         "value": 0.869565217
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "Hyde Park",
+         "value": 0.913043478
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "Hyde Park",
+         "value": 0.434782609
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "Hyde Park",
+         "value": 0.869565217
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "Hyde Park",
+         "value": 0.086956522
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "Hyde Park",
+         "value": 0.47826087
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "Hyde Park",
+         "value": 0.260869565
+      }
+   ]
+},
+ {
+   "key": "Jamaica Plain",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "Jamaica Plain",
+         "value": 0.347826087
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "Jamaica Plain",
+         "value": 0.826086957
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "Jamaica Plain",
+         "value": 0.391304348
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "Jamaica Plain",
+         "value": 0.565217391
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "Jamaica Plain",
+         "value": 0.173913043
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "Jamaica Plain",
+         "value": 0.739130435
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "Jamaica Plain",
+         "value": 0.434782609
+      }
+   ]
+},
+ {
+   "key": "Longwood",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "Longwood",
+         "value": 0.043478261
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "Longwood",
+         "value": 0.260869565
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "Longwood",
+         "value": 1
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "Longwood",
+         "value": 0.304347826
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "Longwood",
+         "value": 0.52173913
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "Longwood",
+         "value": 0.913043478
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "Longwood",
+         "value": 0.608695652
+      }
+   ]
+},
+ {
+   "key": "Mattapan",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "Mattapan",
+         "value": 0.608695652
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "Mattapan",
+         "value": 0.695652174
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "Mattapan",
+         "value": 0.652173913
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "Mattapan",
+         "value": 1
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "Mattapan",
+         "value": 0.217391304
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "Mattapan",
+         "value": 0.304347826
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "Mattapan",
+         "value": 0.173913043
+      }
+   ]
+},
+ {
+   "key": "Mission Hill",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "Mission Hill",
+         "value": 0.47826087
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "Mission Hill",
+         "value": 0.782608696
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "Mission Hill",
+         "value": 0.956521739
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "Mission Hill",
+         "value": 0.782608696
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "Mission Hill",
+         "value": 0.47826087
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "Mission Hill",
+         "value": 0.086956522
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "Mission Hill",
+         "value": 0.086956522
+      }
+   ]
+},
+ {
+   "key": "North End",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "North End",
+         "value": 0.565217391
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "North End",
+         "value": 0.217391304
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "North End",
+         "value": 0.217391304
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "North End",
+         "value": 0.043478261
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "North End",
+         "value": 0.565217391
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "North End",
+         "value": 0.130434783
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "North End",
+         "value": 0.826086957
+      }
+   ]
+},
+ {
+   "key": "Roslindale",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "Roslindale",
+         "value": 0.695652174
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "Roslindale",
+         "value": 0.869565217
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "Roslindale",
+         "value": 0.260869565
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "Roslindale",
+         "value": 0.652173913
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "Roslindale",
+         "value": 0.130434783
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "Roslindale",
+         "value": 0.869565217
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "Roslindale",
+         "value": 0.52173913
+      }
+   ]
+},
+ {
+   "key": "Roxbury",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "Roxbury",
+         "value": 0.391304348
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "Roxbury",
+         "value": 0.956521739
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "Roxbury",
+         "value": 0.869565217
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "Roxbury",
+         "value": 0.956521739
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "Roxbury",
+         "value": 0.434782609
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "Roxbury",
+         "value": 0.652173913
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "Roxbury",
+         "value": 0.391304348
+      }
+   ]
+},
+ {
+   "key": "South Boston",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "South Boston",
+         "value": 0.217391304
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "South Boston",
+         "value": 0.391304348
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "South Boston",
+         "value": 0.173913043
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "South Boston",
+         "value": 0.173913043
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "South Boston",
+         "value": 0.608695652
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "South Boston",
+         "value": 0.347826087
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "South Boston",
+         "value": 0.565217391
+      }
+   ]
+},
+ {
+   "key": "South Boston Waterfront",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "South Boston Waterfront",
+         "value": 0.173913043
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "South Boston Waterfront",
+         "value": 0.086956522
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "South Boston Waterfront",
+         "value": 0.086956522
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "South Boston Waterfront",
+         "value": 0.130434783
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "South Boston Waterfront",
+         "value": 0.869565217
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "South Boston Waterfront",
+         "value": 0.217391304
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "South Boston Waterfront",
+         "value": 1
+      }
+   ]
+},
+ {
+   "key": "South End",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "South End",
+         "value": 0.782608696
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "South End",
+         "value": 0.565217391
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "South End",
+         "value": 0.52173913
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "South End",
+         "value": 0.695652174
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "South End",
+         "value": 1
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "South End",
+         "value": 1
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "South End",
+         "value": 0.739130435
+      }
+   ]
+},
+ {
+   "key": "West End",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "West End",
+         "value": 0.739130435
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "West End",
+         "value": 0.652173913
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "West End",
+         "value": 0.47826087
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "West End",
+         "value": 0.434782609
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "West End",
+         "value": 0.304347826
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "West End",
+         "value": 0.826086957
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "West End",
+         "value": 0.782608696
+      }
+   ]
+},
+ {
+   "key": "West Roxbury",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "West Roxbury",
+         "value": 1
+      },
+      {
+         "axis": "Hispanic/Latino",
+         "NeighborName": "West Roxbury",
+         "value": 0.304347826
+      },
+      {
+         "axis": "Below Poverty",
+         "NeighborName": "West Roxbury",
+         "value": 0.043478261
+      },
+      {
+         "axis": "Non-white",
+         "NeighborName": "West Roxbury",
+         "value": 0.347826087
+      },
+      {
+         "axis": "Temperature",
+         "NeighborName": "West Roxbury",
+         "value": 0.043478261
+      },
+      {
+         "axis": "Stormwater",
+         "NeighborName": "West Roxbury",
+         "value": 0.391304348
+      },
+      {
+         "axis": "Flood Zone",
+         "NeighborName": "West Roxbury",
+         "value": 0.217391304
+      }
+   ]
+},
+ {
+   "key": "",
+   "values": [
+      {
+         "axis": "Age 65+",
+         "NeighborName": "",
+         "value": null
+      },
+      {
+         "axis": "",
+         "NeighborName": "",
+         "value": null
+      },
+      {
+         "axis": "",
+         "NeighborName": "",
+         "value": null
+      },
+      {
+         "axis": "",
+         "NeighborName": "",
+         "value": null
+      },
+      {
+         "axis": "",
+         "NeighborName": "",
+         "value": null
+      },
+      {
+         "axis": "",
+         "NeighborName": "",
+         "value": null
+      },
+      {
+         "axis": "",
+         "NeighborName": "",
+         "value": null
+      }
+   ]
+}
+]

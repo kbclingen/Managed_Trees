@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mapping Boston's Tree Equity through Parallel Coordinates</title>
+
+
+  <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+  <link rel = "stylesheet" href= "https://fonts.googleapis.com/css?family=Nunito">
+
+</head>
+<style>
+
+#firstvisualdiv, #secondvisualdiv, #thirdvisualdiv, #fourthvisualdiv {
+  position: sticky;
+  top: 0%;
+  padding-left:0%;
+  padding-right:5%;
+  padding-top: 0%;
+  padding-bottom: 5%;
+  }
+
+#introtext {
+  position: sticky;
+  top: 20%;
+  padding-left:5%;
+  padding-right:5%;
+  padding-top: 0%;
+  padding-bottom: 10%;
+}
+
+body {
+  font-family: 'Nunito Light 300';
+  font-size: 12px;
+  font-weight: 300;
+  fill: #242424;
+  text-align: left;
+  cursor: default;
+}
+
+p {
+  font-family: "Nunito";
+  font-size: 14px;
+  color:#222222;
+  font-weight: "Light 300";
+  text-align: left;
+}
+
+sub-p {
+  font-family: "Nunito";
+  font-size: 12px;
+  color:#222222;
+  font-weight:300;
+  text-justify:inter-word;
+  text-align: left;
+}
+
+h1 {
+  font-family: "Nunito";
+  color:#222222;
+  font-size:52px;
+  opacity: 1;
+  line-height:1.3;
+  text-shadow: 10px 10px 10px #000;
+}
+
+h2 {
+  font-family: "Nunito";
+  color:#242424;
+  font-size:26px;
+  font-weight:50;
+  line-height:1.3;
+  text-shadow: 5px 5px 5px #000;
+}
+
+h3 {
+  font-family: "Nunito";
+  color:#222222;
+  font-size:26px;
+  font-weight:50;
+  line-height:1.3;
+  text-align: left;
+}
+
+a {
+  font-family: "Nunito";
+  font-size: 16px;
+  color:#222222;
+  font-weight:300;
+  text-justify:inter-word;
+
+}
+
+svg {
+  font-family: "Nunito";
+  font-style: "normal";
+}
+
+.background path {
+  fill: none;
+  stroke: none;
+  stroke-width: 20px;
+  pointer-events: stroke;
+}
+
+.foreground path {
+  fill: none;
+  stroke: #405567;
+  stroke-width: 1.6px;
+}
+
+/*.brush .extent {
+  fill-opacity: .3;
+  fill: #a7554b;
+  shape-rendering: crispEdges;
+}*/
+
+
+.axis .title {
+  font-size: 10px;
+  font-weight: normal;
+//  transform: translate (-5px, -6px);
+  text-transform: uppercase;
+}
+
+.axis line,
+.axis path {
+  fill: none;
+  stroke: #000;
+  stroke-width: 2px;
+  stroke-opacity: .25;
+  shape-rendering: crispEdges;
+}
+
+.label {
+  -webkit-transition: fill 125ms linear;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.active .label:not(.inactive) {
+  font-weight: bold;
+}
+
+.label.inactive {
+  fill: #ccc;
+}
+
+.foreground path.inactive {
+  stroke: #839896;
+  stroke-opacity: .5;
+  stroke-width: .8px;
+}
+
+.foreground path.active{
+  stroke-width: 3px;
+}
+
+</style>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MANAGED TREES</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Radar.html">Explore by Neighborhood</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Linking Variables</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="InteractiveMap.html">Interactive Priority Map</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="References.html">References</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<main role="main" class="container" >
+	<div class='row'>
+		<div class = "col-12">
+        	<br><br>
+        	<h3> Explore Boston's Tree Equity through Parallel Coordinates</h3>
+        	<br><br>
+        	<p> To shift the conversation, a measure of tree equity necessarily includes other variables. We must take into consideration who lives in the neighborhoods that the City of Boston is planting, and how structural racism has impacted where the Boston Parks Department has invested its financial capital.  </p>
+        	<p>Adding considerations of income, the amount of existing public and private open space, as well as a social vulnerability index and other variables, begin to enrich the story. </p>
+        	<p>Use the parallel coordinates plot below to further explore how different social and environmental variables measure up when exploring canopy cover across Boston neighborhoods. The chart brings in additional social and environmental variables to look for patterns and relationships across different numerical data.
+          	Hover over a line or neighborhood to highlight the data for that neighborhood, and relate the existing urban tree canopy to race, open space and other variables.  </p>
+        	<p> Consider the case of Roxbury. While Roxbury's 2016 canopy cover was just under 25%, and therefore may not be a priority for city planting, Roxbury has limited public open space, which might signal the city government to spend more capital in the Neighborhood to create additional shade along open space like sidewalks.</p>
+          <p>Identifying the problem of inequitable canopy coverage is only the first step to mobilizing communities to pick up shovels and grow to their urban forest.<p>
+          <p>Understanding where to prioritize planting projects requires thoughtful, localized weighing of the many variables to make a particular community unique - because it is not always the places with just the least amount of canopy cover that need it the most, and conditions can very drastically from one block to the next.<p>
+          <p>To address the nuance in planning for priority tree planting areas for an improved urban forest, the interactive priority weighting map below was created to allow agency in determining what combination of conditions matter the most within a small community, neighborhood, or the city as a whole. These concerns are represented at the scale of a city block, further breaking down the possibilities for understanding where tree canopy is most desperately needed.<p>
+          <p>Consider what matters most to you or your community. Are you most concerned with providing elderly residents over 65 with shade in areas with low existing canopy cover and dangerous urban heat island conditions, or are you concerned with the deep inequity in canopy cover in primarily non-white neighborhoods? Are you interested in the potentials for urban forestry to mitigate the effects of sea level rise by prioritizing planting in areas where greater soil permeability and root systems can help deal with the stormwater and coastal flooding? Or do you feel like as many different characteristics of the neighborhood should be taken into account as possible in a thoughtfully crafted weighting system to provide a holistic view of priority planting areas?<p>
+      	</div>
+      </div>
+    </div>
+
+  <div class="col-12">
+    <div id = "parallelcoords"></div>
+    <div class="firstvisualdiv"></div>
+    <script src = "//d3js.org/d3.v3.min.js"></script>
+    <svg src = "svg">
+  </div>
+
+</main>
+<script> type="text/javascript"
+
+
+  var margin = {top: 130, right: 120, bottom: 160, left: 220},
+      width = 1280 - margin.left - margin.right,
+      height = 760 - margin.top - margin.bottom;
+
+      var dimensions = [
+        {
+          name: "Neighborhood",
+          scale: d3.scale.ordinal().rangePoints([0, height]),
+          type: String
+        },
+        {
+          name: "Total Population",
+          scale: d3.scale.linear().range([0, height]),
+          type: Number
+        },
+        {
+          name: "Population over 65 (%)",
+          scale: d3.scale.linear().range([height, 0]),
+          type: Number
+        },
+        {
+          name: "Non-white Population (%)",
+          scale: d3.scale.linear().range([height, 0]),
+          type: Number
+        },
+        {
+          name: "Hispanic Population (%)",
+          scale: d3.scale.linear().range([height, 0]),
+          type: Number
+        },
+        {
+          name: "No High School Education (%)",
+          scale: d3.scale.linear().range([height, 0]),
+          type: Number
+        },
+        {
+          name: "Unemployment (%)",
+          scale: d3.scale.linear().range([height, 0]),
+          type: Number
+        },
+        {
+          name: "Median Income",
+          scale: d3.scale.linear().range([height, 0]),
+          type: Number
+        },
+        {
+          name: "Temperature",
+          scale: d3.scale.linear().range([height, 0]),
+          type: Number
+        },
+        {
+          name: "Public Open Space (%)",
+          scale: d3.scale.linear().range([height, 0]),
+          type: Number
+        },
+        {
+          name: "Private Open Space (%)",
+          scale: d3.scale.linear().range([height, 0]),
+          type: Number
+        },
+        {
+          name: "Impervious Surfaces (%)",
+          scale: d3.scale.linear().range([height, 0]),
+          type: Number
+        },
+        {
+          name: "Total SVI Flags",
+          scale: d3.scale.linear().range([height, 0]),
+          type: Number
+        },
+        {
+          name: "2016 Canopy Cover (%)",
+          scale: d3.scale.linear().range([height, 0]),
+          type: Number
+        },
+      ];
+
+      var foreground, background;
+
+      var x = d3.scale.ordinal()
+          .domain(dimensions.map(function(d) { return d.name; }))
+          .rangePoints([0, width]);
+
+      var line = d3.svg.line()
+          .defined(function(d) { return !isNaN(d[1]); });
+
+      var yAxis = d3.svg.axis()
+          .orient("left");
+
+      var svg = d3.select("body").append("svg")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      var dimension = svg.selectAll(".dimension")
+          .data(dimensions)
+        .enter().append("g")
+          .attr("class", "dimension")
+          .attr("transform", function(d) { return "translate(" + x(d.name) + ")"; });
+
+      //var chartContainer = "#svg";
+
+      d3.csv("Tracts_Neighborhoods.csv", function(error, data) {
+        if (error) throw error;
+
+        dimensions.forEach(function(dimension) {
+          dimension.scale.domain(dimension.type === Number
+              ? d3.extent(data, function(d) { return +d[dimension.name]; })
+              : data.map(function(d) { return d[dimension.name]; }).sort());
+        });
+
+        background = svg.append("g")
+            .attr("class", "background")
+          .selectAll("path")
+            .data(data)
+          .enter().append("path")
+            .attr("d", draw);
+
+        foreground = svg.append("g")
+            .attr("class", "foreground")
+          .selectAll("path")
+            .data(data)
+          .enter().append("path")
+            .attr("d", draw);
+
+            //add title
+
+        svg.append("text")
+          .attr("x", (0))
+          .attr("y", (-110))
+          .attr("text-anchor", "start")
+          .style("font-size", "18px")
+          //.style("text-decoration", "underline")
+          .text ("Link Social and Environmental Variables to Canopy Cover")
+
+        svg.append("text")
+          .attr("x", (0))
+          .attr("y", (-95))
+          .attr("text-anchor", "start")
+          .style("font-size", "12px")
+          .text ("Hover over a neighborhood to explore social and environmental variables.")
+
+        dimension.append("g")
+            .attr("class", "axis")
+            .each(function(d) { d3.select(this).call(yAxis.scale(d.scale)); })
+          .append("text")
+            .attr("class", "title")
+            .attr('transform', 'rotate(-25)')
+            .attr("text-anchor", "top")
+            .attr("y", -5)
+            .text(function(d) { return d.name; });
+
+        // Add and store a brush for each axis.
+        /*dimension.append("g")
+            .attr("class", "brush")
+            .each(function(d) { d3.select(this).call(d.scale.brush = d3.svg.brush().y(d.scale).on("brush", brush)); })
+            .selectAll("rect")
+            .attr("x", -8)
+            .attr("width", 16);*/
+
+        // Rebind the axis data to simplify mouseover.
+        svg.select(".axis").selectAll("text:not(.title)")
+            .attr("class", "label")
+            .data(data, function(d) { return d.Neighborhood || d; });
+
+        var projection = svg.selectAll(".axis text, .background path,.foreground path")
+            .on("mouseover", mouseover)
+            .on("mouseout", mouseout);
+
+
+        function mouseover(d) {
+          svg.classed("active", true);
+          projection.classed("inactive", function(p) { return p !== d; });
+          projection.filter(function(p) { return p === d; }).each(moveToFront);
+        }
+
+        function mouseout(d) {
+          svg.classed("active", false);
+          projection.classed("inactive", false);
+        }
+
+        function moveToFront() {
+          this.parentNode.appendChild(this);
+        }
+      });
+
+      function draw(d) {
+        return line(dimensions.map(function(dimension) {
+          return [x(dimension.name), dimension.scale(d[dimension.name])];
+        }));
+      }
+
+      // Handles a brush event, toggling the display of foreground lines.
+      /*function brush() {
+        var actives = dimensions.filter(function(d) { return !d.scale.brush.empty(); }),
+          extents = actives.map(function(d) { return d.scale.brush.extent(); });
+        foreground.style("display", function(d) {
+          return actives.every(function(p, i) {
+            return extents[i][0] <= d[p.name] && d[p.name] <= extents[i][1];
+          }) ? null : "none";
+        });
+      }
+
+      function resetBrush() {
+        brush
+          .clear()
+          .event(d3.select(".brush"));
+      }*/
+
+
+
+</script>
+</body>
+</html>

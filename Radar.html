@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
+		<title>Radar Chart</title>
+
+		<!-- Google fonts and bootstrap-->
+		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+		<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+		<!-- ScrollMagic -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+
+		<!-- D3.js -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.3.0/d3-legend.js" charset="utf-8"></script>
+
+		<style>
+
+		body {
+			font-family: 'Nunito';
+			font-size: 11px;
+			font-weight: 300;
+			fill: #242424;
+			text-align: left;
+			cursor: default;
+		}
+
+		p {
+			font-family: 'Nunito', sans-serif;
+			font-size: 16px;
+			color:#222222;
+			font-weight:300;
+			text-justify:inter-word;
+		}
+
+		sub-p {
+			font-family: 'Nunito', sans-serif;
+			font-size: 12px;
+			color:#222222;
+			font-weight:300;
+			text-justify:inter-word;
+		}
+
+		h1 {
+			font-family: 'Nunito', sans-serif;
+			color:#222222;
+			font-size:52px;
+			opacity: 1;
+			line-height:1.3;
+			text-shadow: 10px 10px 10px #000;
+		}
+
+		h2 {
+			font-family: 'Nunito', sans-serif;
+			color:#242424;
+			font-size:26px;
+			font-weight:50;
+			line-height:1.3;
+			text-shadow: 5px 5px 5px #000;
+		}
+
+		h3 {
+			font-family: 'Nunito', sans-serif;
+			color:#222222;
+			font-size:26px;
+			font-weight:50;
+			line-height:1.3;
+		}
+
+		a {
+		  font-family: 'Nunito', sans-serif;
+		  font-size: 16px;
+		  color:#222222;
+		  font-weight:300;
+		  text-justify:inter-word;
+
+		}
+
+		#firstvisualdiv, #secondvisualdiv, #thirdvisualdiv, #fourthvisualdiv {
+			position: sticky;
+			top: 0%;
+			padding-left:0%;
+			padding-right:5%;
+			padding-top: 0%;
+			padding-bottom: 5%;
+			}
+
+		#introtext {
+			position: sticky;
+			top: 20%;
+			padding-left:5%;
+			padding-right:5%;
+			padding-top: 0%;
+			padding-bottom: 10%;
+		}
+
+	 .text1opacity, .text2opacity, .text3opacity, .text4opacity {
+				opacity:0;
+				transition: opacity 1s;
+				 -webkit-transition: opacity 1s;
+				}
+
+		.sec1opacity, .sec2opacity {
+			 opacity:1;
+		}
+
+		.active {
+				opacity:1;
+			}
+
+		.inactive {
+				opacity:0;
+				transition: opacity 1s;
+				 -webkit-transition: opacity 1s;
+				}
+
+
+		.title-block {
+			position: absolute;
+			text-align: center;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			opacity: .8;
+		}
+
+		.title-image{
+			opacity: .5
+		}
+
+		.bar {
+			fill: #b9c5b8;
+		}
+
+		.bar:hover {
+			fill: #405567;
+		}
+
+		.axis text {
+			font-size: 10px;
+			font-family: 'Open Sans', sans-serif;
+		}
+
+		.axis path,
+		.axis line {
+			fill: none;
+			stroke: #000;
+			shape-rendering: crispEdges;
+		}
+
+		.x.axis path {
+			display: none;
+		}
+
+		.tooltip {
+			position: absolute;
+			padding: 10px;
+			font: 10px sans-serif;
+			background: #222;
+			color: #fff;
+			border: 0px;
+			border-radius: 8px;
+			text-shadow: none;
+			pointer-events: none;
+			opacity: 0.9;
+			visibility: hidden;
+		}
+
+
+		</style>
+
+	</head>
+	<body>
+
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">MANAGED TREES</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon"></span>
+	      </button>
+	      <div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="index.html">Home
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="Radar.html">Explore by Neighborhood</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="parallelcoords.html">Linking Variables</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="InteractiveMap.html">Interactive Priority Map</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="References.html">References</a>
+						</li>
+					</ul>
+	      </div>
+	    </div>
+	  </nav>
+
+		<main role="main" class="container" >
+
+
+			<div class='row'>
+
+
+	<div class="col-8">
+		<div id=firstvisualdiv>
+						<svg class="barChart"></svg>
+						<div class="radarChart"></div>
+						<script src="radarChart.js"></script>
+		</div>
+	</div>
+
+
+	<div class = "col-4">
+					<br><br>
+					<h3> Explore Tree Canopy, Environmental, and Social Variables in Boston Neighborhoods  </h3>
+					<br><br>
+					<p> This bar chart shows how the percent tree canopy compares across Boston neighborhoods. Hover over each bar to see a corresponding shape in the radar plot below to see other social and environmental characteristics of that neighborhood. Each variable is displayed as a percentile for that measure compared to the other
+						neighborhoods in Boston.</p>
+					<p>People over the age of 65, the non-white population, Hispanic/Latino population and people below the Federal Poverty Line are measured as a percentage of the total neighborhood population. Stormwater and flood zones are measured as a percentage of total land area that are estimated to be susceptible to flooding in 2050. The temperature variable represents ambient urban air temperature at 3pm on a late-July day in 2019. The difference across the city shows where lack of canopy cover and impervious surfaces create intense heat islands effects.</p>
+					<p>An equitable measure of tree canopy must extend beyond the physical number of trees planted to take into account the social benefits that trees provide through shade in parks, plazas and along sidewalks. Trees also provide invaluable ecosystem services, including stabilizing the soil, regulating air temperatures, especially around urban heat islands, reducing erosion, slowing and filtering stormwater, and mitigating anthropogenic climate
+						change as they sequester carbon.</p>
+					<br><br>
+					<br><br>
+					<br><br>
+					<br><br>
+					<br><br>
+					<br><br>
+				</div>
+			</div>
+		</main>
+		<script>
+			//////////////////////////////////////////////////////////////
+			//////////////////////// Set-Up //////////////////////////////
+			//////////////////////////////////////////////////////////////
+
+			var marginRadar = {top: 50, right: 100, bottom: 100, left: 300},
+				widthRadar = Math.min(1100, window.innerWidth - 10) - marginRadar.left - marginRadar.right,
+				heightRadar = Math.min(widthRadar, window.innerHeight - marginRadar.top - marginRadar.bottom - 20);
+
+			//////////////////////////////////////////////////////////////
+			//////////////////// Draw the Chart //////////////////////////
+			//////////////////////////////////////////////////////////////
+
+			var colorRadar = d3.scale.ordinal()
+				.range(["#405567"]);
+
+			var radarChartOptions = {
+			  width: widthRadar,
+			  height: heightRadar,
+			  margin: marginRadar,
+			  maxValue: 0.5,
+			  wrapWidth: 60,
+			  levels: 5,
+			  roundStrokes: true,
+			  color: colorRadar,
+			  axisName: "axis",
+			  areaName: "NeighborName",
+			  value: "value"
+			};
+
+			//Load the data and Call function to draw the Radar chart
+			d3.json("export_radar_final.json", function(error, data){
+				RadarChart(".radarChart", data, radarChartOptions);
+				//BarChart(".barChart", data, BarChartOptions);
+			});
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
+		<title>Radar Chart</title>
+
+		<!-- Google fonts and bootstrap-->
+		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+		<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+		<!-- ScrollMagic -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+
+		<!-- D3.js -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.3.0/d3-legend.js" charset="utf-8"></script>
+
+		<style>
+
+		body {
+			font-family: 'Nunito', sans-serif;
+			font-size: 11px;
+			font-weight: 300;
+			fill: #242424;
+			text-align: left;
+			cursor: default;
+		}
+
+		p {
+			font-family: 'Nunito', sans-serif;
+			font-size: 16px;
+			color:#222222;
+			font-weight:300;
+			text-justify:inter-word;
+		}
+
+		h1 {
+			font-family: 'Nunito', sans-serif;
+			color:#222222;
+			font-size:52px;
+			opacity: 1;
+			line-height:1.3;
+			/*text-shadow: 10px 10px 10px #000;*/
+		}
+
+		h2 {
+			font-family: 'Nunito', sans-serif;
+			color:#242424;
+			font-size:26px;
+			font-weight:50;
+			line-height:1.3;
+			/*text-shadow: 5px 5px 5px #000;*/
+		}
+
+		a {
+		  font-family: 'Nunito', sans-serif;
+		  font-size: 16px;
+		  color:#222222;
+		  font-weight:300;
+		  text-justify:inter-word;
+
+		}
+
+
+		</style>
+
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+			<div class="container">
+				<a class="navbar-brand" href="index.html">MANAGED TREES</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="index.html">Home
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="Radar.html">Explore by Neighborhood</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="parallelcoords.html">Linking Variables</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="InteractiveMap.html">Interactive Priority Map</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="References.html">References</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+<br><br>
+ <div class="container">
+	<div class = "row">
+		<div class = "col-12">
+
+					<h2>  Acknowledgements </h2>
+					<p>Justin Palmer. Using d3-tip to add tooltips to a d3 bar chart. <a href = "https://gist.github.com/caged/6476579" target="_blank">https://gist.github.com/caged/6476579</a> </p>
+					<p>Micah Stubbs. Radar Chart with an Interactive Legend. <a href = "https://gist.github.com/micahstubbs/a772306d6fd49874ec92" target="_blank">https://gist.github.com/micahstubbs/a772306d6fd49874ec92</a> </p>
+					<p>Mike Bostock. Cost of Living – Parallel Coordinates. <a href = "https://gist.github.com/mbostock/1558011" target="_blank">https://gist.github.com/mbostock/1558011</a>  </p>
+					<p>Mike Bostock. Map Projections Distortions. <a href = "https://gist.github.com/mbostock/3709000" target="_blank">https://gist.github.com/mbostock/3709000</a> </p>
+					<p>Lo Bénichou. Mapping the US elections: the 2020 edition guide to feature state.<a href = "https://blog.mapbox.com/mapping-the-us-elections-the-2020-edition-guide-to-feature-state-7f4f6f94eaf9" target="_blank">https://blog.mapbox.com/mapping-the-us-elections-the-2020-edition-guide-to-feature-state-7f4f6f94eaf9</a> </p>
+					<p>Mapbox Docs. Show and Hide Layers. <a href = " https://docs.mapbox.com/mapbox-gl-js/example/toggle-layers/" target="_blank"> https://docs.mapbox.com/mapbox-gl-js/example/toggle-layers/</a> </p>
+					<p>Mapbox Docs. Create a Time Slider. <a href = "https://docs.mapbox.com/mapbox-gl-js/example/timeline-animation/ " target="_blank">https://docs.mapbox.com/mapbox-gl-js/example/timeline-animation/ </a> </p>
+					<br> <br>
+					<h2>References</h2>
+					<p>Bowen, Abel. Liberty Tree. 1774, corner of Essex and Orange Streets. 1835. Wood block print. Boston, MA: Historic New England. Prints
+						and engravings collection, 1830s-1920. </p>
+					<p>Boston Parks and Recreation Department, Annual Report 2019. Accessed online November 29, 2020. <a href = "https://www.boston.gov/sites/default/files/file/2020/02/2019%20Annual%20Report%20pdf_0.pdf" target="_blank">
+						https://www.boston.gov/sites/default/files/file/2020/02/2019%20Annual%20Report%20pdf_0.pdf</a> </p>
+					<p>Boston Parks and Recreation. “City Begins Work on Liberty Tree Plaza.” March 17, 2018. <a href = "https://www.boston.gov/news/city-begins-work-liberty-tree-plaza" target="_blank">
+						https://www.boston.gov/news/city-begins-work-liberty-tree-plaza<a/></p>
+					<p>Boston Planning and Development Agency, Operating and Capital Budget FY18, November 2017. Accessed online November 29, 2020. <a href = "http://www.bostonplans.org/getattachment/d548981d-850c-4789-9405-9211f748fadf" target="_blank">
+						http://www.bostonplans.org/getattachment/d548981d-850c-4789-9405-9211f748fadf</a> </p>
+					<p>Jarlath O’Neil-Dunne, An Assessment of Boston’s Tree Canopy, Montpelier: University of Vermont Spatial Analysis Laboratory, 2016. Accessed online November 29, 2020. <a href = "https://d279m997dpfwgl.cloudfront.net/wp/2020/01/Boston-2016-Tree-Canopy-Assessment.pdf" target="_blank">
+							https://d279m997dpfwgl.cloudfront.net/wp/2020/01/Boston-2016-Tree-Canopy-Assessment.pdf</a> </p>
+					<p>McElhinney, Ashley, Rick Harper and Daniel A. Lass “The Citizen Forester.” Massachusetts Urban and Community Forestry Program 214 (2018). </p>
+					<p>S.J. Livesley, E.G. McPherson, and C. Calfapietra. “The Urban Forest and Ecosystem Services: Impacts on Urban Water, Heat, and Pollution Cycles at the Tree, Street and City Scale.”
+						Journal of Environmental Quality 45 (2016): 119-124. </p>
+					<br><br>
+					<h2>Data</h2>
+					<p>American Community Survey. 2014-2018. Five Year Estimates.</p>
+					<p>Boston Metro Tree Canopy 2016. Accessed from Boston GIS. November 10, 2020. <a href= "http://boston.maps.arcgis.com/home/webmap/viewer.html?webmap=1cdaf92591c748219e90d433b2b804dd" target="_blank">
+						http://boston.maps.arcgis.com/home/webmap/viewer.html?webmap=1cdaf92591c748219e90d433b2b804dd</a>  </p>
+					<p>Climate Ready Boston Mid-Range (2050 Estimates)Coastal Flooding and Stormwater Data. Accessed November 10, 2020. <a href= https://www.boston.gov/departments/environment/climate-ready-boston-map-explorer target="_blank">
+						https://www.boston.gov/departments/environment/climate-ready-boston-map-explorer</a>  </p>
+					<p>MassGIS 2016 Land Cover/Land Use Data. Accessed November 10, 2020. <a href= https://docs.digital.mass.gov/dataset/massgis-data-2016-land-coverland-use target="_blank">
+						https://docs.digital.mass.gov/dataset/massgis-data-2016-land-coverland-use</a>  </p>
+					<p>United States Census TIGER/Line Shapefiles Tracts & Blocks, Suffolk County MA. 2019.</p>
+					<p>Wicked Hot Boston Temperature Data. July 29th 2020. Accessed November 10, 2020. <a href= https://www.mos.org/pes-forum-archive/wickedhotboston" target="_blank">
+						https://www.mos.org/pes-forum-archive/wickedhotboston</a>  </p>
+					<br><br>
+					<h2>Visualization Credits</h2>
+					<p>"Explore By Neighborhood" - Winn Costantini.</p>
+					<p>"Linking Variables" - Kira Clingen.</p>
+					<p>"Interactive Priority Map" - Slide Kelly.</p>
+					<p>Support from Sarah Williams, Yuan Lai, Patricia Cafferky, and Yanchao Li. Created for MIT Course "11.454 - Big Data, Visualization, & Society" taught by Sarah Williams, MIT Department of Urban Studies and Planning.</p>
+					<p></p>
+					<p></p>
+					<p></p>
+					<p></p>
+					<p></p>
+				</div>
+			</div>
+		</div>
+
+		<script>
+
+
+		</script>
+	</body>
+</html>
